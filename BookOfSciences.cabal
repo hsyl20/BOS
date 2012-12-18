@@ -15,6 +15,12 @@ build-type:          Simple
 cabal-version:       >=1.8
 
 executable BookOfSciences
-  main-is:             src/BookOfSciences.hs
-  -- other-modules:       
-  build-depends:       base ==4.6.*
+  main-is:             BookOfSciences.hs
+  
+  other-modules:       
+    BOS.PageFormat
+  
+  hs-source-dirs: src
+  
+  build-depends:       base ==4.6.*,
+                       HPDF ==1.4.*
