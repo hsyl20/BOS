@@ -4,21 +4,21 @@ import Graphics.PDF (PDFRect(..))
 
 -- Unit conversions
 
-inchToPt :: Double -> Int
-inchToPt = round . (*) 72.0
+inchToPt :: Double -> Double
+inchToPt = (*) 72.0
 
-mmToPt :: Double -> Int
-mmToPt = round . flip (/) 127.0 . (*) 36.0
+mmToPt :: Double -> Double
+mmToPt = flip (/) 127.0 . (*) 360.0
 
-cmToPt :: Double -> Int
-cmToPt = round . flip (/) 127.0 . (*) 360.0
+cmToPt :: Double -> Double
+cmToPt = flip (/) 127.0 . (*) 3600.0
 
 -- Rectangles
 ptRect :: Int -> Int -> PDFRect
 ptRect w h = PDFRect 0 0 w h 
 
-convRect :: (Double -> Int) -> Double -> Double -> PDFRect
-convRect f w h = ptRect (f w) (f h)
+convRect :: (Double -> Double) -> Double -> Double -> PDFRect
+convRect f w h = ptRect (round $ f w) (round $ f h)
 
 inchRect :: Double -> Double -> PDFRect
 inchRect = convRect inchToPt
