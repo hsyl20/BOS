@@ -1,17 +1,7 @@
 module BOS.PageFormat where
 
 import Graphics.PDF (PDFRect(..))
-
--- Unit conversions
-
-inchToPt :: Double -> Double
-inchToPt = (*) 72.0
-
-mmToPt :: Double -> Double
-mmToPt = flip (/) 127.0 . (*) 360.0
-
-cmToPt :: Double -> Double
-cmToPt = flip (/) 127.0 . (*) 3600.0
+import BOS.Units
 
 -- Rectangles
 ptRect :: Int -> Int -> PDFRect
@@ -28,7 +18,6 @@ cmRect = convRect cmToPt
 
 mmRect :: Double -> Double -> PDFRect
 mmRect = convRect mmToPt
-
 
 -- Paper sizes
 a0 = inchRect 33.11 46.81

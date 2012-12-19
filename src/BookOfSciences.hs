@@ -5,6 +5,7 @@ import Graphics.PDF.Document
 import Data.Traversable (forM)
 
 import qualified BOS.PageFormat as PageFormat
+import BOS.Units (cmToPt)
 
 readChapter :: Int -> IO String
 readChapter n = readFile $ "contents/" ++ (show n) ++ ".dat"
@@ -45,4 +46,4 @@ generateChapter ch = do
         displayText $ toPDFString title
       strokeColor black
       setWidth 0.5
-      stroke $ Rectangle (10 :+ 10) ((PageFormat.cmToPt 21 - 10) :+ (PageFormat.cmToPt 29.7 - 10))
+      stroke $ Rectangle (10 :+ 10) ((cmToPt 21 - 10) :+ (cmToPt 29.7 - 10))
